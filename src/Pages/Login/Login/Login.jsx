@@ -1,36 +1,62 @@
-import React, { useState } from "react";
-import LoginAnimation from "../LoginAnimation/LoginAnimation.jsx";
+import React, { useRef } from "react";
 import { Button, Col, Container, Form, Row } from "react-bootstrap";
-import { useSignInWithEmailAndPassword, useSignInWithGoogle } from "react-firebase-hooks/auth";
-import { Link, useNavigate,} from "react-router-dom"
-import auth from "../../../firebase.init.jsx";
+import {
+  useSendPasswordResetEmail,
+  useSignInWithEmailAndPassword,
+} from "react-firebase-hooks/auth";
+import { Link, useLocation, useNavigate } from "react-router-dom";
+import auth from "../../../firebase.init";
+import Loading from "../../Shared/Loading/Loading";
+import { ToastContainer, toast } from "react-toastify";
+import LoginAnimation from "../LoginAnimation/LoginAnimation.jsx";
 import GoogleSign from "../GoogleSign/GoogleSign.jsx";
 
-
 const Login = () => {
-  const [email, setEmail] = useState('')
-  const [password, setPassword] = useState('')
-  const [signInWithEmailAndPassword, user, loading, error] =
-    useSignInWithEmailAndPassword(auth);
-  const navigate = useNavigate()
-  
-  const handleEmailBlur = event => {
-    setEmail(event.target.value)
+   const emailRef = useRef("");
+   const passwordRef = useRef("");
+   const navigate = useNavigate();
+   const location = useLocation();
 
-  }
+   let from = location.state?.from?.pathname || "/";
+   let errorElement;
+   const [signInWithEmailAndPassword, user, loading, error] =
+     useSignInWithEmailAndPassword(auth);
 
-  const handlePasswordBlur = event => {
-    setPassword(event.target.value)
-  }
-  if (user) {
-     navigate('/checkout')
-  }
+   const [sendPasswordResetEmail, sending] = useSendPasswordResetEmail(auth);
 
-  const handleUserSignIn = event => {
-    event.preventDefault()
-    signInWithEmailAndPassword(email, password)
-  }
+   if (loading || sending) {
+     return <Loading></Loading>;
+   }
 
+   if (user) {
+     navigate(from, { replace: true });
+   }
+
+   if (error) {
+     errorElement = <p className="text-danger">Error: {error?.message}</p>;
+   }
+
+   const handleSubmit = (event) => {
+     event.preventDefault();
+     const email = emailRef.current.value;
+     const password = passwordRef.current.value;
+
+     signInWithEmailAndPassword(email, password);
+   };
+
+   const navigateRegister = (event) => {
+     navigate("/register");
+   };
+
+   const resetPassword = async () => {
+     const email = emailRef.current.value;
+     if (email) {
+       await sendPasswordResetEmail(email);
+       toast("Sent email");
+     } else {
+       toast("please enter your email address");
+     }
+   };
 
   return (
     <div className="container">
@@ -42,11 +68,11 @@ const Login = () => {
           <Col md={6} xs={12} className="">
             <div className="mx-auto w-75">
               <h1 className="text-primary mt-5">Please Login</h1>
-              <Form onSubmit={handleUserSignIn}>
+              <Form onSubmit={handleSubmit}>
                 <Form.Group className="mb-3" controlId="formBasicEmail">
                   <Form.Label>Email address</Form.Label>
                   <Form.Control
-                    onBlur={handleEmailBlur}
+                    ref={emailRef}
                     type="email"
                     placeholder="Enter email"
                     required
@@ -59,7 +85,7 @@ const Login = () => {
                 <Form.Group className="mb-3" controlId="formBasicPassword">
                   <Form.Label>Password</Form.Label>
                   <Form.Control
-                    onBlur={handlePasswordBlur}
+                    ref={passwordRef}
                     type="password"
                     placeholder="Password"
                     required
@@ -74,14 +100,25 @@ const Login = () => {
               <p>
                 New to learner{" "}
                 <Link
+                  onClick={navigateRegister}
                   to="/register"
                   className="text-danger pe-auto text-decoration-none"
                 >
                   Please Register
                 </Link>
               </p>
+              <p>
+                Forget Password?{" "}
+                <button
+                  className="btn btn-link text-primary pe-auto text-decoration-none"
+                  onClick={resetPassword}
+                >
+                  Reset Password
+                </button>{" "}
+              </p>
+              <ToastContainer />
               <div>
-              <GoogleSign></GoogleSign>
+                <GoogleSign></GoogleSign>
               </div>
             </div>
           </Col>

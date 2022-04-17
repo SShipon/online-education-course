@@ -2,49 +2,41 @@ import React, { useState } from 'react';
 import './Register.css'
 import { Button, Col, Container, Form, Row } from 'react-bootstrap';
 import { Link, useNavigate } from 'react-router-dom';
-import { useCreateUserWithEmailAndPassword } from "react-firebase-hooks/auth";
-import auth from '../../../firebase.init.jsx';
 import RegisterAnimation from '../RegisterAnimation/RegisterAnimation.jsx';
 import GoogleSign from '../GoogleSign/GoogleSign.jsx';
+import { useCreateUserWithEmailAndPassword, useUpdateProfile } from 'react-firebase-hooks/auth';
+import auth from '../../../firebase.init.jsx';
+import Loading from '../../Shared/Loading/Loading.jsx';
 
 const Register = () => {
-    const [email, setEmail] = useState('')
-     const [password, setPassword] = useState("");
-     const [confirmPassword, setConfirmPassword] = useState("");
-    const [error, setError] = useState("");
-    const [createUserWithEmailAndPassword, user, loading] =
-    useCreateUserWithEmailAndPassword(auth);
-    const navigate = useNavigate()
+  //const[(agree, setAgree)] = useState(false);
+  const [createUserWithEmailAndPassword, user, loading, error] =
+    useCreateUserWithEmailAndPassword(auth, { sendEmailVerification: true });
+  const [updateProfile, updating, updateError] = useUpdateProfile(auth);
 
-    
-    const handleEmailBlur = event => {
-        setEmail(event.target.value)
-    }
-
-
-    const handlePassword = event => {
-        setPassword(event.target.value)
-    }
-
-    const handleConfirmPassword = event => {
-        setConfirmPassword(event.target.value);
+  const navigate = useNavigate()
+  const navigateLogin = () => {
+      navigate('/login')
   }
-  
-  if (user) {
-     navigate('/home')
-  }
-    const handelCarateSubmit = event => {
-        event.preventDefault();
-        if (password !== confirmPassword) {
-            setError('Password not match')
-            return
-        }
-        if (password.length < 6) {
-            setError("Password must be 6 characters  ");
-            return
-        }
-        createUserWithEmailAndPassword(email, password)
-    }
+
+   if (loading || updating) {
+     return <Loading></Loading>;
+   }
+
+   if (user) {
+     console.log("user", user);
+   }
+
+const handleRegister = event => {
+  event.preventDefault();
+  const name = event.target.name.value;
+  const email = event.target.email.value;
+  const password = event.target.password.value;
+   createUserWithEmailAndPassword(email,password)
+};
+
+
+
     return (
       <div className="container">
         <Container>
@@ -52,11 +44,18 @@ const Register = () => {
             <Col md={6} xs={12}>
               <div className="mx-auto w-75">
                 <h1 className="text-primary mt-5">Please Register</h1>
-                <Form onSubmit={handelCarateSubmit}>
+                <Form onSubmit={handleRegister}>
+                  <Form.Group className="mb-3" controlId="formBasicPassword">
+                    <Form.Label>Your Name</Form.Label>
+                    <Form.Control
+                      type="text"
+                      placeholder="Your name"
+                      required
+                    />
+                  </Form.Group>
                   <Form.Group className="mb-3" controlId="formBasicPassword">
                     <Form.Label>Enter Your Email</Form.Label>
                     <Form.Control
-                      onBlur={handleEmailBlur}
                       type="email"
                       placeholder="Enter Your Email"
                       required
@@ -68,34 +67,25 @@ const Register = () => {
                   <Form.Group className="mb-3" controlId="formBasicPassword">
                     <Form.Label>Password</Form.Label>
                     <Form.Control
-                      onBlur={handlePassword}
                       type="password"
                       placeholder="Password"
                       required
                     />
                   </Form.Group>
-                  <Form.Group className="mb-3" controlId="formBasicPassword">
-                    <Form.Label>Confirm Password</Form.Label>
-                    <Form.Control
-                      onBlur={handleConfirmPassword}
-                      type="password"
-                      placeholder="Confirm Password"
-                      required
-                    />
-                  </Form.Group>
-                  <p className="text-error">{error}</p>
+
                   <Button variant="primary" type="submit">
                     Register
                   </Button>
                 </Form>
                 <p>
-                  New to learner{" "}
+                  Already have an account?{" "}
                   <Link
                     to="/login"
-                    className="text-danger pe-auto text-decoration-none"
+                    className="text-primary pe-auto text-decoration-none"
+                    onClick={navigateLogin}
                   >
                     Please Login
-                  </Link>
+                  </Link>{" "}
                 </p>
                 <div>
                   <GoogleSign></GoogleSign>
