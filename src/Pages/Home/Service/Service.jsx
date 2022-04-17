@@ -8,4 +8,4 @@ const Service = () => {
     );
 };
 
-export default Service;<h1>this is service section area</h1>
+export default Service;

@@ -1,0 +1,44 @@
+[
+  {
+    "id": 1,
+    "name": "English",
+    "price": "300",
+    "description": "Lorem ipsum dolor sit amet, consectetu radipisi cing elitBeatae autem aperiam nequ quaera molestias voluptatibus harum ametipsa.",
+    "img": "https://i.ibb.co/FBsvdgB/istockphoto-488150958-170667a.jpg"
+  },
+  {
+    "id": 2,
+    "name": "",
+    "price": "100",
+    "description": "Lorem ipsum dolor sit amet, consectetu radipisi cing elitBeatae autem aperiam nequ quaera molestias voluptatibus harum ametipsa.",
+    "img": "https://i.ibb.co/J2YL4wz/istockphoto-601948602-170667a.jpg"
+  },
+  {
+    "id": 3,
+    "name": "OIL CHANGING",
+    "price": "150",
+    "description": "Lorem ipsum dolor sit amet, consectetu radipisi cing elitBeatae autem aperiam nequ quaera molestias voluptatibus harum ametipsa.",
+    "img": "https://i.ibb.co/cYGvG4q/istockphoto-1031593090-170667a.jpg"
+  },
+  {
+    "id": 4,
+    "name": "BRAKE REPARING",
+    "price": "180",
+    "description": "Lorem ipsum dolor sit amet, consectetu radipisi cing elitBeatae autem aperiam nequ quaera molestias voluptatibus harum ametipsa.",
+    "img": "https://i.ibb.co/P5jmn0D/istockphoto-599907368-170667a.jpg"
+  },
+  {
+    "id": 5,
+    "name": "WASH AND GLASSING",
+    "price": "100",
+    "description": "Lorem ipsum dolor sit amet, consectetu radipisi cing elitBeatae autem aperiam nequ quaera molestias voluptatibus harum ametipsa.",
+    "img": "https://i.ibb.co/vXHmgYq/istockphoto-1165311626-170667a.jpg"
+  },
+  {
+    "id": 6,
+    "name": "COMPLETE ANALYSIS",
+    "price": "300",
+    "description": "Lorem ipsum dolor sit amet, consectetu radipisi cing elitBeatae autem aperiam nequ quaera molestias voluptatibus harum ametipsa",
+    "img": "https://i.ibb.co/XYwwRgD/istockphoto-1220844285-170667a.jpg"
+  }
+]
