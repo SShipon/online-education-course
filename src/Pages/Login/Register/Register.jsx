@@ -5,6 +5,7 @@ import { Link, useNavigate } from 'react-router-dom';
 import { useCreateUserWithEmailAndPassword } from "react-firebase-hooks/auth";
 import auth from '../../../firebase.init.jsx';
 import RegisterAnimation from '../RegisterAnimation/RegisterAnimation.jsx';
+import GoogleSign from '../GoogleSign/GoogleSign.jsx';
 
 const Register = () => {
     const [email, setEmail] = useState('')
@@ -82,10 +83,7 @@ const Register = () => {
                       required
                     />
                   </Form.Group>
-                  <Form.Group className="mb-3" controlId="formBasicCheckbox">
-                    <Form.Check type="checkbox" label="Check me out" />
-                  </Form.Group>
-                  <p className='text-error'>{error}</p>
+                  <p className="text-error">{error}</p>
                   <Button variant="primary" type="submit">
                     Register
                   </Button>
@@ -99,6 +97,9 @@ const Register = () => {
                     Please Login
                   </Link>
                 </p>
+                <div>
+                  <GoogleSign></GoogleSign>
+                </div>
               </div>
             </Col>
             <Col md={6} xs={12} className="">

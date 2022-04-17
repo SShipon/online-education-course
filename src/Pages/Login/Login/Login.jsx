@@ -1,16 +1,18 @@
-import React, { useRef, useState } from "react";
+import React, { useState } from "react";
+import LoginAnimation from "../LoginAnimation/LoginAnimation.jsx";
 import { Button, Col, Container, Form, Row } from "react-bootstrap";
-import { useSignInWithEmailAndPassword } from "react-firebase-hooks/auth";
+import { useSignInWithEmailAndPassword, useSignInWithGoogle } from "react-firebase-hooks/auth";
 import { Link, useNavigate,} from "react-router-dom"
 import auth from "../../../firebase.init.jsx";
-import LoginAnimation from "../LoginAnimation/LoginAnimation.jsx";
+import GoogleSign from "../GoogleSign/GoogleSign.jsx";
+
 
 const Login = () => {
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
   const [signInWithEmailAndPassword, user, loading, error] =
     useSignInWithEmailAndPassword(auth);
-  const  navigate = useNavigate()
+  const navigate = useNavigate()
   
   const handleEmailBlur = event => {
     setEmail(event.target.value)
@@ -28,6 +30,7 @@ const Login = () => {
     event.preventDefault()
     signInWithEmailAndPassword(email, password)
   }
+
 
   return (
     <div className="container">
@@ -62,13 +65,8 @@ const Login = () => {
                     required
                   />
                 </Form.Group>
-                <Form.Group className="mb-3" controlId="formBasicCheckbox">
-                  <Form.Check type="checkbox" label="Check me out" />
-                </Form.Group>
-                <p style={{ color: 'red' }}>{error?.message}</p>
-                {
-                  loading && <p>Loading .....</p>
-                }
+                <p style={{ color: "red" }}>{error?.message}</p>
+                {loading && <p>Loading .....</p>}
                 <Button variant="primary" type="submit">
                   Login
                 </Button>
@@ -82,6 +80,9 @@ const Login = () => {
                   Please Register
                 </Link>
               </p>
+              <div>
+              <GoogleSign></GoogleSign>
+              </div>
             </div>
           </Col>
         </Row>
