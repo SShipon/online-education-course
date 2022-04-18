@@ -4,6 +4,7 @@ import { Button, Col, Container, Form, Row } from 'react-bootstrap';
 import { Link, useNavigate } from 'react-router-dom';
 import { useCreateUserWithEmailAndPassword } from "react-firebase-hooks/auth";
 import auth from '../../../firebase.init.jsx';
+import RegisterAnimation from '../RegisterAnimation/RegisterAnimation.jsx';
 
 const Register = () => {
     const [email, setEmail] = useState('')
@@ -100,7 +101,9 @@ const Register = () => {
                 </p>
               </div>
             </Col>
-            <Col md={6} xs={12} className=""></Col>
+            <Col md={6} xs={12} className="">
+              <RegisterAnimation></RegisterAnimation>
+            </Col>
           </Row>
         </Container>
       </div>

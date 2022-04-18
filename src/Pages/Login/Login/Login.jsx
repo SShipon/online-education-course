@@ -3,6 +3,7 @@ import { Button, Col, Container, Form, Row } from "react-bootstrap";
 import { useSignInWithEmailAndPassword } from "react-firebase-hooks/auth";
 import { Link, useNavigate,} from "react-router-dom"
 import auth from "../../../firebase.init.jsx";
+import LoginAnimation from "../LoginAnimation/LoginAnimation.jsx";
 
 const Login = () => {
   const [email, setEmail] = useState('')
@@ -32,7 +33,9 @@ const Login = () => {
     <div className="container">
       <Container>
         <Row className="d-flex align-items-center my-5 ">
-          <Col md={6} xs={12}></Col>
+          <Col md={6} xs={12}>
+            <LoginAnimation></LoginAnimation>
+          </Col>
           <Col md={6} xs={12} className="">
             <div className="mx-auto w-75">
               <h1 className="text-primary mt-5">Please Login</h1>
