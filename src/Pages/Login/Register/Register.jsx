@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import './Register.css'
 import { Button, Col, Container, Form, Row } from 'react-bootstrap';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { useCreateUserWithEmailAndPassword } from "react-firebase-hooks/auth";
 import auth from '../../../firebase.init.jsx';
 
@@ -11,12 +11,14 @@ const Register = () => {
      const [confirmPassword, setConfirmPassword] = useState("");
     const [error, setError] = useState("");
     const [createUserWithEmailAndPassword, user, loading] =
-      useCreateUserWithEmailAndPassword(auth);
+    useCreateUserWithEmailAndPassword(auth);
+    const navigate = useNavigate()
 
     
     const handleEmailBlur = event => {
         setEmail(event.target.value)
     }
+
 
     const handlePassword = event => {
         setPassword(event.target.value)
@@ -24,8 +26,11 @@ const Register = () => {
 
     const handleConfirmPassword = event => {
         setConfirmPassword(event.target.value);
-    }
-
+  }
+  
+  if (user) {
+     navigate('/home')
+  }
     const handelCarateSubmit = event => {
         event.preventDefault();
         if (password !== confirmPassword) {
@@ -36,6 +41,7 @@ const Register = () => {
             setError("Password must be 6 characters  ");
             return
         }
+        createUserWithEmailAndPassword(email, password)
     }
     return (
       <div className="container">
