@@ -7,9 +7,10 @@ import {
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import auth from "../../../firebase.init";
 import Loading from "../../Shared/Loading/Loading";
-import { ToastContainer, toast } from "react-toastify";
 import LoginAnimation from "../LoginAnimation/LoginAnimation.jsx";
 import GoogleSign from "../GoogleSign/GoogleSign.jsx";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 const Login = () => {
    const emailRef = useRef("");
@@ -18,7 +19,7 @@ const Login = () => {
    const location = useLocation();
 
    let from = location.state?.from?.pathname || "/";
-   let errorElement;
+  let errorElement;
    const [signInWithEmailAndPassword, user, loading, error] =
      useSignInWithEmailAndPassword(auth);
 
@@ -118,7 +119,7 @@ const Login = () => {
               </p>
               <ToastContainer />
               <div>
-                <GoogleSign></GoogleSign>
+                <GoogleSign from={from}></GoogleSign>
               </div>
             </div>
           </Col>

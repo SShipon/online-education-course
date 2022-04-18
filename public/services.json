@@ -1,15 +1,18 @@
 [
   {
+    
     "id": 1,
     "name": "English and Grammar",
-    "price": "300",
+    "price": "270",
+    "section": "honours 3rd year",
     "description": "Test yourself on the right to use with hundreds of different nouns,way to include vocabulary practice in your busy schedule. If you would like to do more in-depth vocabulary practice, .",
     "img": "https://images.pexels.com/photos/5211446/pexels-photo-5211446.jpeg?auto=compress&cs=tinysrgb&h=750&w=1260"
   },
   {
     "id": 2,
-    "name": "Math",
-    "price": "100",
+    "name": "Math and English",
+    "price": "320",
+    "section": "Six and Seven",
     "description": "Interestingly when I look at my relationship to different mathematicians, it is often the case that our common ancestor is Simeon Poisson who had only three advisees: Chasles, ",
     "img": "https://images.pexels.com/photos/8613089/pexels-photo-8613089.jpeg?auto=compress&cs=tinysrgb&h=750&w=1260"
   },
@@ -17,28 +20,32 @@
     "id": 3,
     "name": "Spoken English",
     "price": "150",
+    "section": "Eight",
     "description": "Listen to English every day.Make an English/ESL friend. Make up conversations Read English stories. Start with children's books. Write down new words. Start a notebook for new words.",
-    "img": "https://images.pexels.com/photos/5212345/pexels-photo-5212345.jpeg?auto=compress&cs=tinysrgb&h=750&w=1260"
+    "img": "https://i.ibb.co/VL8fHTr/istockphoto-1340516687-170667a.jpg"
   },
   {
     "id": 4,
     "name": "English Writing",
     "price": "180",
-    "description": "Lorem ipsum dolor sit amet, consectetu radipisi cing elitBeatae autem aperiam nequ quaera molestias voluptatibus harum ametipsa.",
+    "section": "inter first year and second year",
+    "description": "to English every day.Make an English/ESL Make up conversations Read English stories. Start with children's books. Write down new words. Start a notebook ",
     "img": "https://images.pexels.com/photos/5212703/pexels-photo-5212703.jpeg?auto=compress&cs=tinysrgb&h=750&w=1260"
   },
   {
     "id": 5,
     "name": "English Article Writing",
     "price": "100",
-    "description": "Lorem ipsum dolor sit amet, consectetu radipisi cing elitBeatae autem aperiam nequ quaera molestias voluptatibus harum ametipsa.",
+    "section": "HSC Exam 2022",
+    "description": "LInterestingly when I look at my relationship to different mathematicians, it is often the case that our common ancestor is Simeon Poisson who had only three advisees: Chasles,",
     "img": "https://images.pexels.com/photos/8926456/pexels-photo-8926456.jpeg?auto=compress&cs=tinysrgb&h=750&w=1260"
   },
   {
     "id": 6,
-    "name": " English translate",
+    "name": " English translate Writing ",
+    "section": "bachelor degree admission",
     "price": "300",
-    "description": "Lorem ipsum dolor sit amet, consectetu radipisi cing elitBeatae autem aperiam nequ quaera molestias voluptatibus harum ametipsa",
+    "description": "Test yourself on the right to use with hundreds of different nouns,way to include vocabulary practice in your busy schedule. If you would like to do more in-depth vocabulary practice",
     "img": "https://images.pexels.com/photos/5676746/pexels-photo-5676746.jpeg?auto=compress&cs=tinysrgb&h=750&w=1260"
   }
 ]

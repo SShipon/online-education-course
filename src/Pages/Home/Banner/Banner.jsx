@@ -6,17 +6,23 @@ import './Banner.css'
 import BannerHeader from '../BannerHeader/BannerHeader.jsx';
 const Banner = () => {
     return (
-      <div>
+      <>
         <Container>
           <Row className="d-flex align-items-center my-5 ">
             <Col md={6} xs={12}>
-              <Typewriter
-                options={{
-                  strings: ["Hello", "World"],
-                  autoStart: true,
-                  loop: true,
-                }}
-              />
+              <h1 className="text-content">
+                <Typewriter
+                  options={{
+                    strings: [
+                      "<strong>READY TO CREATE </strong>",
+                      "& SELL YOUR ONLINE",
+                      "COURSE OR COACHING?",
+                    ],
+                    autoStart: true,
+                    loop: true,
+                  }}
+                />
+              </h1>
               <p className="banner-text">
                 ToSafeDrive, located in the Paris area, provides a luxurious car
                 service with chauffeur for each of your private and professional
@@ -35,7 +41,7 @@ const Banner = () => {
             </Col>
           </Row>
         </Container>
-      </div>
+      </>
     );
 };
 

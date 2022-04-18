@@ -1,0 +1,12 @@
+.review{
+    justify-content: center !important;
+    align-items: center !important;
+    text-align: center;
+    box-shadow: 5px 8px 8px -2px rgb(115, 114, 114);
+}
+.review img{
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    margin-top: 5px;
+}
