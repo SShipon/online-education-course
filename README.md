@@ -3,8 +3,7 @@
 
 * My online learning web site is to teach students online.
 * I have created this web site so that students can  learn English 
-* at home. Any student can come and study on this web site. From this web site you can register and study at any time
-* Many fast web site online flatform online learning web site
+* at home. Any student can come and study on this web site. From this      site you can register and study at any time
 
 * ----- your website technology use ------
 * Html.
@@ -23,3 +22,4 @@
 
 
 
+# online-education-course
